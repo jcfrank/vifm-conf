@@ -155,6 +155,11 @@ filetype {*.asc},<application/pgp-signature>
 fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
 fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
 
+" Filter-out build and temporary files
+filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
+" Filter-out known files to ignore
+filter /^\.(git\/|DS_Store|gitignore)$/
+
 "" fzf integration
 command! FZFfind : set noquickview
                 \| let $FZF_PICK = term('find . -type f -maxdepth 5 | fzf --height 10 2>/dev/tty')
